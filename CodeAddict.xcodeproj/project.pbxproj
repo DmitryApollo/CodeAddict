@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		374978C383308696B28B9C29 /* Pods_CodeAddict.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5D101172A73347365E322F /* Pods_CodeAddict.framework */; };
 		7B55F1CC25801F3C00A25210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1CB25801F3C00A25210 /* AppDelegate.swift */; };
 		7B55F1CE25801F3C00A25210 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1CD25801F3C00A25210 /* SceneDelegate.swift */; };
-		7B55F1D025801F3C00A25210 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1CF25801F3C00A25210 /* ViewController.swift */; };
-		7B55F1D325801F3C00A25210 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B55F1D125801F3C00A25210 /* Main.storyboard */; };
+		7B55F1D025801F3C00A25210 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1CF25801F3C00A25210 /* RepoViewController.swift */; };
 		7B55F1D525801F3D00A25210 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B55F1D425801F3D00A25210 /* Assets.xcassets */; };
 		7B55F1D825801F3D00A25210 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B55F1D625801F3D00A25210 /* LaunchScreen.storyboard */; };
+		7B55F1E2258020E100A25210 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1E1258020E100A25210 /* Router.swift */; };
+		7B55F1E4258021B900A25210 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1E3258021B900A25210 /* Repo.swift */; };
+		7B55F1E6258021E000A25210 /* AssemblyModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1E5258021E000A25210 /* AssemblyModelBuilder.swift */; };
+		7B55F1E82580221100A25210 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1E72580221100A25210 /* NetworkService.swift */; };
+		7B55F1EE2580243200A25210 /* RepoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1ED2580243200A25210 /* RepoPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0958C10BB7149DC82F77779A /* Pods-CodeAddict.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddict.debug.xcconfig"; path = "Target Support Files/Pods-CodeAddict/Pods-CodeAddict.debug.xcconfig"; sourceTree = "<group>"; };
 		7B55F1C825801F3C00A25210 /* CodeAddict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAddict.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B55F1CB25801F3C00A25210 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B55F1CD25801F3C00A25210 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7B55F1CF25801F3C00A25210 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7B55F1D225801F3C00A25210 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7B55F1CF25801F3C00A25210 /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		7B55F1D425801F3D00A25210 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B55F1D725801F3D00A25210 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B55F1D925801F3D00A25210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B55F1E1258020E100A25210 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7B55F1E3258021B900A25210 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		7B55F1E5258021E000A25210 /* AssemblyModelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssemblyModelBuilder.swift; sourceTree = "<group>"; };
+		7B55F1E72580221100A25210 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		7B55F1ED2580243200A25210 /* RepoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPresenter.swift; sourceTree = "<group>"; };
+		9F5D101172A73347365E322F /* Pods_CodeAddict.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeAddict.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B555B91A81CF7C3776D12C /* Pods-CodeAddict.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddict.release.xcconfig"; path = "Target Support Files/Pods-CodeAddict/Pods-CodeAddict.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				374978C383308696B28B9C29 /* Pods_CodeAddict.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +55,8 @@
 			children = (
 				7B55F1CA25801F3C00A25210 /* CodeAddict */,
 				7B55F1C925801F3C00A25210 /* Products */,
+				B6D2B79E356C7007F63B40A0 /* Pods */,
+				AF417940D180BD2FB4F44242 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +73,75 @@
 			children = (
 				7B55F1CB25801F3C00A25210 /* AppDelegate.swift */,
 				7B55F1CD25801F3C00A25210 /* SceneDelegate.swift */,
-				7B55F1CF25801F3C00A25210 /* ViewController.swift */,
-				7B55F1D125801F3C00A25210 /* Main.storyboard */,
+				7B55F1E5258021E000A25210 /* AssemblyModelBuilder.swift */,
+				7B55F1E1258020E100A25210 /* Router.swift */,
+				7B55F1E9258023CC00A25210 /* RepoModule */,
+				7B55F1EA258023E900A25210 /* ServiceLayer */,
 				7B55F1D425801F3D00A25210 /* Assets.xcassets */,
 				7B55F1D625801F3D00A25210 /* LaunchScreen.storyboard */,
 				7B55F1D925801F3D00A25210 /* Info.plist */,
 			);
 			path = CodeAddict;
+			sourceTree = "<group>";
+		};
+		7B55F1E9258023CC00A25210 /* RepoModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B55F1EB258023F200A25210 /* Model */,
+				7B55F1EC258023FA00A25210 /* View */,
+				7B55F1EF2580243700A25210 /* Presenter */,
+			);
+			path = RepoModule;
+			sourceTree = "<group>";
+		};
+		7B55F1EA258023E900A25210 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				7B55F1E72580221100A25210 /* NetworkService.swift */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		7B55F1EB258023F200A25210 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B55F1E3258021B900A25210 /* Repo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B55F1EC258023FA00A25210 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B55F1CF25801F3C00A25210 /* RepoViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B55F1EF2580243700A25210 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7B55F1ED2580243200A25210 /* RepoPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AF417940D180BD2FB4F44242 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F5D101172A73347365E322F /* Pods_CodeAddict.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6D2B79E356C7007F63B40A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0958C10BB7149DC82F77779A /* Pods-CodeAddict.debug.xcconfig */,
+				A1B555B91A81CF7C3776D12C /* Pods-CodeAddict.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +151,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7B55F1DC25801F3D00A25210 /* Build configuration list for PBXNativeTarget "CodeAddict" */;
 			buildPhases = (
+				1C5D7E23BBA347804AA76D2E /* [CP] Check Pods Manifest.lock */,
 				7B55F1C425801F3C00A25210 /* Sources */,
 				7B55F1C525801F3C00A25210 /* Frameworks */,
 				7B55F1C625801F3C00A25210 /* Resources */,
+				7D367C9EC10C584879C4A19F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +206,72 @@
 			files = (
 				7B55F1D825801F3D00A25210 /* LaunchScreen.storyboard in Resources */,
 				7B55F1D525801F3D00A25210 /* Assets.xcassets in Resources */,
-				7B55F1D325801F3C00A25210 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C5D7E23BBA347804AA76D2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CodeAddict-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D367C9EC10C584879C4A19F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CodeAddict/Pods-CodeAddict-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CodeAddict/Pods-CodeAddict-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CodeAddict/Pods-CodeAddict-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7B55F1C425801F3C00A25210 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B55F1D025801F3C00A25210 /* ViewController.swift in Sources */,
+				7B55F1E2258020E100A25210 /* Router.swift in Sources */,
+				7B55F1D025801F3C00A25210 /* RepoViewController.swift in Sources */,
+				7B55F1E4258021B900A25210 /* Repo.swift in Sources */,
+				7B55F1EE2580243200A25210 /* RepoPresenter.swift in Sources */,
+				7B55F1E6258021E000A25210 /* AssemblyModelBuilder.swift in Sources */,
 				7B55F1CC25801F3C00A25210 /* AppDelegate.swift in Sources */,
 				7B55F1CE25801F3C00A25210 /* SceneDelegate.swift in Sources */,
+				7B55F1E82580221100A25210 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7B55F1D125801F3C00A25210 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7B55F1D225801F3C00A25210 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7B55F1D625801F3D00A25210 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +399,7 @@
 		};
 		7B55F1DD25801F3D00A25210 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0958C10BB7149DC82F77779A /* Pods-CodeAddict.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +418,7 @@
 		};
 		7B55F1DE25801F3D00A25210 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1B555B91A81CF7C3776D12C /* Pods-CodeAddict.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
