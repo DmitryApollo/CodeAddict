@@ -19,6 +19,8 @@
 		7B55F1E82580221100A25210 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1E72580221100A25210 /* NetworkService.swift */; };
 		7B55F1EE2580243200A25210 /* RepoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1ED2580243200A25210 /* RepoPresenter.swift */; };
 		7BF8F19E2580F2850063994D /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8F19D2580F2850063994D /* RepoTableViewCell.swift */; };
+		7BF8F1A5258109AA0063994D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8F1A4258109AA0063994D /* DetailViewController.swift */; };
+		7BF8F1A725810A110063994D /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8F1A625810A110063994D /* DetailPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		7B55F1E72580221100A25210 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7B55F1ED2580243200A25210 /* RepoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPresenter.swift; sourceTree = "<group>"; };
 		7BF8F19D2580F2850063994D /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		7BF8F1A4258109AA0063994D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		7BF8F1A625810A110063994D /* DetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		9F5D101172A73347365E322F /* Pods_CodeAddict.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeAddict.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B555B91A81CF7C3776D12C /* Pods-CodeAddict.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddict.release.xcconfig"; path = "Target Support Files/Pods-CodeAddict/Pods-CodeAddict.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +82,7 @@
 				7B55F1E5258021E000A25210 /* AssemblyModelBuilder.swift */,
 				7B55F1E1258020E100A25210 /* Router.swift */,
 				7B55F1E9258023CC00A25210 /* RepoModule */,
+				7BF8F1A02581090A0063994D /* DetailRepoModule */,
 				7B55F1EA258023E900A25210 /* ServiceLayer */,
 				7B55F1D425801F3D00A25210 /* Assets.xcassets */,
 				7B55F1D625801F3D00A25210 /* LaunchScreen.storyboard */,
@@ -135,6 +140,39 @@
 				7BF8F19D2580F2850063994D /* RepoTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		7BF8F1A02581090A0063994D /* DetailRepoModule */ = {
+			isa = PBXGroup;
+			children = (
+				7BF8F1A22581092A0063994D /* Model */,
+				7BF8F1A1258109210063994D /* View */,
+				7BF8F1A32581092F0063994D /* Presenter */,
+			);
+			path = DetailRepoModule;
+			sourceTree = "<group>";
+		};
+		7BF8F1A1258109210063994D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF8F1A4258109AA0063994D /* DetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF8F1A22581092A0063994D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF8F1A32581092F0063994D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7BF8F1A625810A110063994D /* DetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		AF417940D180BD2FB4F44242 /* Frameworks */ = {
@@ -272,9 +310,11 @@
 				7B55F1D025801F3C00A25210 /* RepoViewController.swift in Sources */,
 				7B55F1E4258021B900A25210 /* Repo.swift in Sources */,
 				7B55F1EE2580243200A25210 /* RepoPresenter.swift in Sources */,
+				7BF8F1A725810A110063994D /* DetailPresenter.swift in Sources */,
 				7B55F1E6258021E000A25210 /* AssemblyModelBuilder.swift in Sources */,
 				7BF8F19E2580F2850063994D /* RepoTableViewCell.swift in Sources */,
 				7B55F1CC25801F3C00A25210 /* AppDelegate.swift in Sources */,
+				7BF8F1A5258109AA0063994D /* DetailViewController.swift in Sources */,
 				7B55F1CE25801F3C00A25210 /* SceneDelegate.swift in Sources */,
 				7B55F1E82580221100A25210 /* NetworkService.swift in Sources */,
 			);

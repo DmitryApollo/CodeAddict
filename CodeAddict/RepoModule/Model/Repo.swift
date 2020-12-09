@@ -26,10 +26,10 @@ struct Repo: Decodable {
     var forks: Int?
     var issues: Int?
     var defaultBranch: String?
+    var repoUrl: String?
     
     var ownerAvatarUrl: String?
     var ownerName: String?
-
 
     enum CodingKeys: String, CodingKey {
         case watchers
@@ -43,6 +43,7 @@ struct Repo: Decodable {
         case issues = "open_issues_count"
         case forks
         case defaultBranch = "default_branch"
+        case repoUrl = "html_url"
     }
     
     enum OwnerCodingKeys: String, CodingKey {
@@ -63,6 +64,7 @@ struct Repo: Decodable {
         self.issues = try container.decode(Int?.self, forKey: .issues)
         self.forks = try container.decode(Int?.self, forKey: .forks)
         self.defaultBranch = try container.decode(String?.self, forKey: .defaultBranch)
+        self.repoUrl = try container.decode(String?.self, forKey: .repoUrl)
 
         let ownerContainer = try container.nestedContainer(keyedBy: OwnerCodingKeys.self, forKey: .owner)
         self.ownerAvatarUrl = try ownerContainer.decode(String?.self, forKey: .ownerAvatarUrl)

@@ -10,7 +10,7 @@ import UIKit
 
 protocol AssemblyBuilderProtocol {
     func createRepoModule(router: RouterProtocol) -> UIViewController
-//    func createDetailModule(repo: Repo?, router: RouterProtocol) -> UIViewController
+    func createDetailModule(repo: Repo?, router: RouterProtocol) -> UIViewController
 }
 
 class AssemblyModelBuilder: AssemblyBuilderProtocol {
@@ -22,11 +22,11 @@ class AssemblyModelBuilder: AssemblyBuilderProtocol {
         return view
     }
     
-//    func createDetailModule(repo: Repo?, router: RouterProtocol) -> UIViewController {
-//        let view = DetailViewController()
-//        let networkService = NetworkService()
-//        let presenter = DetailPresenter(view: view, networkService: networkService, router: router, repo: repo)
-//        view.presenter = presenter
-//        return view
-//    }
+    func createDetailModule(repo: Repo?, router: RouterProtocol) -> UIViewController {
+        let view = DetailViewController()
+        let networkService = NetworkService()
+        let presenter = DetailPresenter(view: view, networkService: networkService, router: router, repo: repo)
+        view.presenter = presenter
+        return view
+    }
 }
