@@ -19,14 +19,14 @@ class RepoTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(mainView)
+        addSubview(mainView)
         mainView.layer.cornerRadius = 10
         mainView.backgroundColor = .systemGray6
         mainView.snp.makeConstraints { (maker) in
             maker.top.equalToSuperview().offset(5)
             maker.bottom.equalToSuperview().offset(-5)
             maker.leading.equalToSuperview().offset(8)
-            maker.trailing.equalToSuperview().offset(18)
+            maker.trailing.equalToSuperview().offset(-8)
         }
         
         mainView.addSubview(userImageView)
@@ -69,7 +69,14 @@ class RepoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
         
-        
+        userImageView.image = nil
+        titleLabel.text = ""
+        subtitleLabel.text = ""
     }
 }

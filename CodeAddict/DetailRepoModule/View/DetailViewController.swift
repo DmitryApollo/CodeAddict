@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
     let repoTitleLabel = UILabel()
     
     var presenter: DetailViewPresenterProtocol!
+    var activityIndicator = UIActivityIndicatorView(style: .medium)
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
@@ -41,6 +42,8 @@ class DetailViewController: UIViewController {
         presenter.setRepo()
         
         setUpTableView()
+        setUpActivityIndicator()
+        
         guard let owner = presenter.repo?.ownerName, let repo = presenter.repo?.name else { return }
         presenter.getCommits(owner: owner, repoTitle: repo)
     }
@@ -157,7 +160,6 @@ class DetailViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(CommitTableViewCell.self, forCellReuseIdentifier: "commitCell")
-//        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         
         tableView.snp.makeConstraints { (maker) in
@@ -166,6 +168,21 @@ class DetailViewController: UIViewController {
             maker.trailing.equalToSuperview()
             maker.bottom.equalTo(shareView.snp.top)
         }
+    }
+    
+    private func setUpActivityIndicator() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        tableView.addSubview(activityIndicator)
+        
+        activityIndicator.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.centerY.equalToSuperview()
+        }
+    }
+    
+    deinit {
+        ImageCache.default.clearMemoryCache()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -208,11 +225,12 @@ extension DetailViewController: DetailViewProtocol {
     }
     
     func success() {
+        activityIndicator.removeFromSuperview()
         tableView.reloadData()
     }
     
     func failure(error: Error) {
-        
+        activityIndicator.removeFromSuperview()
     }
 }
 

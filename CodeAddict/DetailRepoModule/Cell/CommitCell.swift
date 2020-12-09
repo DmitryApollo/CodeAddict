@@ -20,13 +20,13 @@ class CommitTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(mainView)
+        addSubview(mainView)
         mainView.layer.cornerRadius = 10
         mainView.snp.makeConstraints { (maker) in
             maker.top.equalToSuperview().offset(10)
             maker.bottom.equalToSuperview().offset(-10)
             maker.leading.equalToSuperview().offset(8)
-            maker.trailing.equalToSuperview().offset(18)
+            maker.trailing.equalToSuperview().offset(-8)
         }
         
         mainView.addSubview(roundedView)
@@ -51,14 +51,15 @@ class CommitTableViewCell: UITableViewCell {
         
         authorNameLabel.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview().offset(56)
-            maker.trailing.equalToSuperview().offset(-8)
+            maker.trailing.equalToSuperview()
             maker.top.equalToSuperview().offset(4)
         }
         
         emailLabel.font = UIFont.systemFont(ofSize: 14)
+        emailLabel.lineBreakMode = .byTruncatingTail
         emailLabel.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview().offset(56)
-            maker.trailing.equalToSuperview().offset(-8)
+            maker.trailing.equalToSuperview()
             maker.top.equalTo(authorNameLabel.snp.bottom)
         }
         
@@ -70,7 +71,7 @@ class CommitTableViewCell: UITableViewCell {
         messageLabel.snp.makeConstraints { (maker) in
             maker.top.equalTo(emailLabel.snp.bottom).offset(4)
             maker.leading.equalToSuperview().offset(56)
-            maker.trailing.equalToSuperview().offset(-8)
+            maker.trailing.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
     }
@@ -82,6 +83,13 @@ class CommitTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
         
+        authorNameLabel.text = ""
+        emailLabel.text = ""
+        messageLabel.text = ""
     }
 }
