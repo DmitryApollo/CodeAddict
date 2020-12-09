@@ -10,10 +10,12 @@ import Foundation
 
 protocol NetworkServiceProtocol {
     func searchRepo(repoName: String, page: Int, perPage: Int, completion: @escaping (Result<RepoListResponse?, Error>) -> Void)
+    func getCommits(owner: String, repoTitle: String, completion: @escaping (Result<[Commit]?, Error>) -> Void)
 }
 
 extension NetworkServiceProtocol {
     func searchRepo(repoName: String, page: Int, perPage: Int, completion: @escaping (Result<RepoListResponse?, Error>) -> Void) {}
+    func getCommits(owner: String, repoTitle: String, completion: @escaping (Result<[Commit]?, Error>) -> Void) {}
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -39,6 +41,33 @@ class NetworkService: NetworkServiceProtocol {
                     return
                 }
                 let obj = try JSONDecoder().decode(RepoListResponse.self, from: data)
+                completion(.success(obj))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    func getCommits(owner: String, repoTitle: String, completion: @escaping (Result<[Commit]?, Error>) -> Void) {
+        let urlString = "https://api.github.com/repos/\(owner)/\(repoTitle)/commits"
+        guard let url = URL(string: urlString) else {
+            let error = NSError(domain: "No support this title", code: 404, userInfo: nil)
+            completion(.failure(error))
+            return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            do {
+                guard let data = data else {
+                    let error = NSError(domain: "data not found", code: 404, userInfo: nil)
+                    completion(.failure(error))
+                    return
+                }
+                let obj = try JSONDecoder().decode([Commit].self, from: data)
                 completion(.success(obj))
             } catch {
                 completion(.failure(error))

@@ -37,10 +37,12 @@ class DetailViewController: UIViewController {
 //        self.navigationController?.navigationBar.topItem?.title = "Back"
         self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         
+        setUpUI()
         presenter.setRepo()
         
-        setUpUI()
         setUpTableView()
+        guard let owner = presenter.repo?.ownerName, let repo = presenter.repo?.name else { return }
+        presenter.getCommits(owner: owner, repoTitle: repo)
     }
     
     private func setUpUI() {
@@ -136,7 +138,7 @@ class DetailViewController: UIViewController {
         shareView.addSubview(shareButton)
         shareButton.layer.cornerRadius = 10
         shareButton.backgroundColor = .systemGray6
-        shareButton.setTitle("♂︎ Share Repo", for: .normal)
+        shareButton.setTitle("⏍ Share Repo", for: .normal)
         shareButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         shareButton.addTarget(self, action: #selector(shareButtonDidTapped), for: .touchUpInside)
         
@@ -154,8 +156,9 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: "commitCell")
-        tableView.separatorStyle = .none
+        tableView.register(CommitTableViewCell.self, forCellReuseIdentifier: "commitCell")
+//        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         
         tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
@@ -191,7 +194,6 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewProtocol {
     func setRepo(repo: Repo?) {
-        print("repo setted")
         
         repoTitleLabel.text = repo?.name
         userNameLabel.text = repo?.ownerName
@@ -202,37 +204,31 @@ extension DetailViewController: DetailViewProtocol {
         if let urlString = repo?.ownerAvatarUrl, let avatarURL = URL(string: urlString) {
             imageView.contentMode = .scaleAspectFill
             imageView.kf.setImage(with: avatarURL, options: [])
-            
-//            let largeTitleAppearance = UINavigationBarAppearance()
-//
-//            largeTitleAppearance.configureWithOpaqueBackground()
-//            largeTitleAppearance.backgroundImage = imageView.image
-//
-//            self.navigationController?.navigationBar.standardAppearance = largeTitleAppearance
-//            self.navigationController?.navigationBar.scrollEdgeAppearance = largeTitleAppearance
-            
         }
+    }
+    
+    func success() {
+        tableView.reloadData()
+    }
+    
+    func failure(error: Error) {
+        
     }
 }
 
 extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3//presenter.repos.count
+        return presenter.commits.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "commitCell", for: indexPath) as? RepoTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "commitCell", for: indexPath) as? CommitTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        cell.titleLabel.text = "TEST"
-//        let repo = presenter.repos[indexPath.row]
-//        if let urlString = repo.ownerAvatarUrl, let avatarURL = URL(string: urlString) {
-//            cell.userImageView.kf.setImage(with: avatarURL, options: [])
-//        }
-//        cell.titleLabel.text = repo.name
-//        if let watchers = repo.watchers {
-//            cell.subtitleLabel.text = "⭐︎ \(watchers)"
-//        }
+        let commit = presenter.commits[indexPath.row]
+        cell.authorNameLabel.text = commit.name
+        cell.emailLabel.text = commit.email
+        cell.messageLabel.text = commit.message
         return cell
     }
 }
@@ -260,9 +256,4 @@ extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 48
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 86
-    }
-    
 }

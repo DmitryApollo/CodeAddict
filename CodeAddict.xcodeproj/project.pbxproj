@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		374978C383308696B28B9C29 /* Pods_CodeAddict.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5D101172A73347365E322F /* Pods_CodeAddict.framework */; };
+		7B4B4CC52581428A007DB9B7 /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B4CC42581428A007DB9B7 /* CommitCell.swift */; };
+		7B4B4CC825814488007DB9B7 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B4CC725814488007DB9B7 /* Commit.swift */; };
 		7B55F1CC25801F3C00A25210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1CB25801F3C00A25210 /* AppDelegate.swift */; };
 		7B55F1CE25801F3C00A25210 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1CD25801F3C00A25210 /* SceneDelegate.swift */; };
 		7B55F1D025801F3C00A25210 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1CF25801F3C00A25210 /* RepoViewController.swift */; };
@@ -25,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		0958C10BB7149DC82F77779A /* Pods-CodeAddict.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddict.debug.xcconfig"; path = "Target Support Files/Pods-CodeAddict/Pods-CodeAddict.debug.xcconfig"; sourceTree = "<group>"; };
+		7B4B4CC42581428A007DB9B7 /* CommitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
+		7B4B4CC725814488007DB9B7 /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		7B55F1C825801F3C00A25210 /* CodeAddict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAddict.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B55F1CB25801F3C00A25210 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B55F1CD25801F3C00A25210 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B4B4CC625814299007DB9B7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7B4B4CC42581428A007DB9B7 /* CommitCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		7B55F1BF25801F3C00A25210 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +160,7 @@
 				7BF8F1A22581092A0063994D /* Model */,
 				7BF8F1A1258109210063994D /* View */,
 				7BF8F1A32581092F0063994D /* Presenter */,
+				7B4B4CC625814299007DB9B7 /* Cell */,
 			);
 			path = DetailRepoModule;
 			sourceTree = "<group>";
@@ -163,6 +176,7 @@
 		7BF8F1A22581092A0063994D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7B4B4CC725814488007DB9B7 /* Commit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,11 +323,13 @@
 				7B55F1E2258020E100A25210 /* Router.swift in Sources */,
 				7B55F1D025801F3C00A25210 /* RepoViewController.swift in Sources */,
 				7B55F1E4258021B900A25210 /* Repo.swift in Sources */,
+				7B4B4CC825814488007DB9B7 /* Commit.swift in Sources */,
 				7B55F1EE2580243200A25210 /* RepoPresenter.swift in Sources */,
 				7BF8F1A725810A110063994D /* DetailPresenter.swift in Sources */,
 				7B55F1E6258021E000A25210 /* AssemblyModelBuilder.swift in Sources */,
 				7BF8F19E2580F2850063994D /* RepoTableViewCell.swift in Sources */,
 				7B55F1CC25801F3C00A25210 /* AppDelegate.swift in Sources */,
+				7B4B4CC52581428A007DB9B7 /* CommitCell.swift in Sources */,
 				7BF8F1A5258109AA0063994D /* DetailViewController.swift in Sources */,
 				7B55F1CE25801F3C00A25210 /* SceneDelegate.swift in Sources */,
 				7B55F1E82580221100A25210 /* NetworkService.swift in Sources */,
