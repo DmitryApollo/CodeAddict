@@ -36,10 +36,10 @@ class Router: RouterProtocol {
     }
     
     func showDetail(repo: Repo?) {
-//        if let navController = navigationController {
-//            guard let detailVC = assemblyBuilder?.createDetailModule(repo: repo, router: self) else { return }
-//            navController.pushViewController(detailVC, animated: true)
-//        }
+        if let navController = navigationController {
+            guard let detailVC = assemblyBuilder?.createDetailModule(repo: repo, router: self) else { return }
+            navController.pushViewController(detailVC, animated: true)
+        }
     }
     
     func popToRoot() {

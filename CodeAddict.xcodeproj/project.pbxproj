@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		7B55F1E6258021E000A25210 /* AssemblyModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1E5258021E000A25210 /* AssemblyModelBuilder.swift */; };
 		7B55F1E82580221100A25210 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1E72580221100A25210 /* NetworkService.swift */; };
 		7B55F1EE2580243200A25210 /* RepoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B55F1ED2580243200A25210 /* RepoPresenter.swift */; };
+		7BF8F19E2580F2850063994D /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF8F19D2580F2850063994D /* RepoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		7B55F1E5258021E000A25210 /* AssemblyModelBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssemblyModelBuilder.swift; sourceTree = "<group>"; };
 		7B55F1E72580221100A25210 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7B55F1ED2580243200A25210 /* RepoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPresenter.swift; sourceTree = "<group>"; };
+		7BF8F19D2580F2850063994D /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
 		9F5D101172A73347365E322F /* Pods_CodeAddict.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeAddict.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B555B91A81CF7C3776D12C /* Pods-CodeAddict.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddict.release.xcconfig"; path = "Target Support Files/Pods-CodeAddict/Pods-CodeAddict.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 				7B55F1EB258023F200A25210 /* Model */,
 				7B55F1EC258023FA00A25210 /* View */,
 				7B55F1EF2580243700A25210 /* Presenter */,
+				7BF8F19F2580F2890063994D /* Cell */,
 			);
 			path = RepoModule;
 			sourceTree = "<group>";
@@ -126,6 +129,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		7BF8F19F2580F2890063994D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7BF8F19D2580F2850063994D /* RepoTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		AF417940D180BD2FB4F44242 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +151,6 @@
 				0958C10BB7149DC82F77779A /* Pods-CodeAddict.debug.xcconfig */,
 				A1B555B91A81CF7C3776D12C /* Pods-CodeAddict.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -263,6 +273,7 @@
 				7B55F1E4258021B900A25210 /* Repo.swift in Sources */,
 				7B55F1EE2580243200A25210 /* RepoPresenter.swift in Sources */,
 				7B55F1E6258021E000A25210 /* AssemblyModelBuilder.swift in Sources */,
+				7BF8F19E2580F2850063994D /* RepoTableViewCell.swift in Sources */,
 				7B55F1CC25801F3C00A25210 /* AppDelegate.swift in Sources */,
 				7B55F1CE25801F3C00A25210 /* SceneDelegate.swift in Sources */,
 				7B55F1E82580221100A25210 /* NetworkService.swift in Sources */,

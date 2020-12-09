@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class RepoViewController: UIViewController {
 
@@ -43,7 +44,7 @@ class RepoViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "defaultCell")
+        tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: "repoCell")
         tableView.separatorStyle = .none
         
         tableView.snp.makeConstraints { (maker) in
@@ -71,9 +72,16 @@ extension RepoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as? RepoTableViewCell else { return UITableViewCell() }
+        cell.accessoryType = .disclosureIndicator
         let repo = presenter.repos[indexPath.row]
-        cell.textLabel?.text = repo.name
+        if let urlString = repo.ownerAvatarUrl, let avatarURL = URL(string: urlString) {
+            cell.userImageView.kf.setImage(with: avatarURL, options: [])
+        }
+        cell.titleLabel.text = repo.name
+        if let watchers = repo.watchers {
+            cell.subtitleLabel.text = "⭐︎ \(watchers)"
+        }
         return cell
     }
 }
@@ -99,8 +107,18 @@ extension RepoViewController: UITableViewDelegate {
         return clearView
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let repo = presenter.repos[indexPath.row]
+        presenter.tapOnRepo(repo: repo)
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 48
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84
     }
 }
 
