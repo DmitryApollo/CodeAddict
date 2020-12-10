@@ -11,6 +11,7 @@ import Foundation
 protocol RepoViewProtocol: class {
     func success()
     func failure(error: Error)
+    var page: Int { get set }
 }
 
 protocol RepoViewPresenterProtocol : class {
@@ -18,14 +19,15 @@ protocol RepoViewPresenterProtocol : class {
     func searchRepo(repoName: String, page: Int, perPage: Int)
     func tapOnRepo(repo: Repo?)
     var repos: [Repo] { get set }
+    var totalCount: Int? { get set }
 }
 
 class RepoPresenter: RepoViewPresenterProtocol {
-    
     weak var view: RepoViewProtocol?
     var router: RouterProtocol?
     let networkService: NetworkServiceProtocol!
     var repos: [Repo] = []
+    var totalCount: Int?
     
     required init(view: RepoViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol) {
         self.view = view
@@ -43,7 +45,14 @@ class RepoPresenter: RepoViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let list):
-                    self.repos = list?.items ?? []
+                    if let list = list {
+                        self.totalCount = list.totalCount
+                        if self.view?.page == 1 {
+                            self.repos = list.items
+                        } else {
+                            self.repos.append(contentsOf: list.items)
+                        }
+                    }
                     self.view?.success()
                 case .failure(let error):
                     self.view?.failure(error: error)

@@ -13,6 +13,7 @@ class CommitTableViewCell: UITableViewCell {
     
     let mainView = UIView()
     let roundedView = UIImageView()
+    let commitNumberLabel = UILabel()
     let authorNameLabel = UILabel()
     let emailLabel = UILabel()
     let messageLabel = UILabel()
@@ -40,8 +41,17 @@ class CommitTableViewCell: UITableViewCell {
         roundedView.snp.makeConstraints { (maker) in
             maker.width.equalTo(40)
             maker.height.equalTo(40)
-            maker.leading.equalToSuperview().offset(8)
+            maker.leading.equalToSuperview().offset(12)
             maker.centerY.equalToSuperview()
+        }
+        
+        roundedView.addSubview(commitNumberLabel)
+        commitNumberLabel.textAlignment = .center
+        commitNumberLabel.snp.makeConstraints { (maker) in
+            maker.top.equalToSuperview()
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.bottom.equalToSuperview()
         }
         
         authorNameLabel.font = UIFont.systemFont(ofSize: 14)
@@ -50,27 +60,27 @@ class CommitTableViewCell: UITableViewCell {
         authorNameLabel.lineBreakMode = .byTruncatingTail
         
         authorNameLabel.snp.makeConstraints { (maker) in
-            maker.leading.equalToSuperview().offset(56)
+            maker.leading.equalTo(roundedView.snp.trailing).offset(16)
             maker.trailing.equalToSuperview()
             maker.top.equalToSuperview().offset(4)
         }
         
-        emailLabel.font = UIFont.systemFont(ofSize: 14)
+        emailLabel.font = UIFont.systemFont(ofSize: 16)
         emailLabel.lineBreakMode = .byTruncatingTail
         emailLabel.snp.makeConstraints { (maker) in
-            maker.leading.equalToSuperview().offset(56)
+            maker.leading.equalTo(roundedView.snp.trailing).offset(16)
             maker.trailing.equalToSuperview()
-            maker.top.equalTo(authorNameLabel.snp.bottom)
+            maker.top.equalTo(authorNameLabel.snp.bottom).offset(2)
         }
         
-        messageLabel.font = UIFont.systemFont(ofSize: 14)
+        messageLabel.font = UIFont.systemFont(ofSize: 16)
         messageLabel.numberOfLines = 0
         messageLabel.lineBreakMode = .byWordWrapping
         messageLabel.textColor = .systemGray2
         
         messageLabel.snp.makeConstraints { (maker) in
             maker.top.equalTo(emailLabel.snp.bottom).offset(4)
-            maker.leading.equalToSuperview().offset(56)
+            maker.leading.equalTo(roundedView.snp.trailing).offset(16)
             maker.trailing.equalToSuperview()
             maker.bottom.equalToSuperview()
         }

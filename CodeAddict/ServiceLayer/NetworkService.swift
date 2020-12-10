@@ -19,7 +19,6 @@ extension NetworkServiceProtocol {
 }
 
 class NetworkService: NetworkServiceProtocol {
-    
     func searchRepo(repoName: String, page: Int, perPage: Int, completion: @escaping (Result<RepoListResponse?, Error>) -> Void) {
         let correctString = repoName.replacingOccurrences(of: " ", with: "+")
         let urlString = "https://api.github.com/search/repositories?q=\(correctString)&page=\(page)&per_page=\(perPage)"

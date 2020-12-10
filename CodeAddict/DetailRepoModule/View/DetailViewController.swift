@@ -35,7 +35,6 @@ class DetailViewController: UIViewController {
                 
         view.backgroundColor = .white
         self.navigationController?.navigationBar.tintColor = UIColor.white
-//        self.navigationController?.navigationBar.topItem?.title = "Back"
         self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         
         setUpUI()
@@ -102,7 +101,7 @@ class DetailViewController: UIViewController {
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
             maker.top.equalTo(imageView.snp.bottom)
-            maker.height.equalTo(56)
+            maker.height.equalTo(64)
         }
         
         browserView.addSubview(repoTitleLabel)
@@ -142,14 +141,14 @@ class DetailViewController: UIViewController {
         shareButton.layer.cornerRadius = 10
         shareButton.backgroundColor = .systemGray6
         shareButton.setTitle("⏍ Share Repo", for: .normal)
-        shareButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        shareButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         shareButton.addTarget(self, action: #selector(shareButtonDidTapped), for: .touchUpInside)
         
         shareButton.snp.makeConstraints { (maker) in
-            maker.height.equalTo(44)
-            maker.leading.equalToSuperview().offset(10)
-            maker.trailing.equalToSuperview().offset(-10)
-            maker.top.equalToSuperview().offset(10)
+            maker.height.equalTo(56)
+            maker.leading.equalToSuperview().offset(16)
+            maker.trailing.equalToSuperview().offset(-16)
+            maker.top.equalToSuperview()
         }
     }
     
@@ -199,8 +198,8 @@ class DetailViewController: UIViewController {
     }
     
     @objc func shareButtonDidTapped() {
-        guard let repo = presenter.repo else { return }
-        let textToShare = [repo.repoUrl]
+        guard let url = presenter.repo?.repoUrl else { return }
+        let textToShare = [url]
         let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         activityViewController.excludedActivityTypes = [.airDrop, .postToFacebook]
@@ -231,6 +230,9 @@ extension DetailViewController: DetailViewProtocol {
     
     func failure(error: Error) {
         activityIndicator.removeFromSuperview()
+        let errorAlert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(errorAlert, animated: true)
     }
 }
 
@@ -247,6 +249,7 @@ extension DetailViewController: UITableViewDataSource {
         cell.authorNameLabel.text = commit.name
         cell.emailLabel.text = commit.email
         cell.messageLabel.text = commit.message
+        cell.commitNumberLabel.text = "\(indexPath.row + 1)"
         return cell
     }
 }

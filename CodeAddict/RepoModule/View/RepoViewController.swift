@@ -15,8 +15,14 @@ class RepoViewController: UIViewController {
     var presenter: RepoViewPresenterProtocol!
     let searchController = UISearchController(searchResultsController: nil)
     let tableView = UITableView()
-    let activityIndicator = UIActivityIndicatorView(style: .medium)
-    var errorAlert: UIAlertController?
+    private let activityIndicator = UIActivityIndicatorView(style: .medium)
+    private var errorAlert: UIAlertController?
+    private var isLoading: Bool = false
+    var page = 1
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +82,7 @@ extension RepoViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         let repo = presenter.repos[indexPath.row]
         if let urlString = repo.ownerAvatarUrl, let avatarURL = URL(string: urlString) {
-            cell.userImageView.kf.setImage(with: avatarURL, options: [])
+            cell.userImageView.kf.setImage(with: avatarURL, options: [.cacheMemoryOnly])
         }
         cell.titleLabel.text = repo.name
         if let watchers = repo.watchers {
@@ -98,13 +104,28 @@ extension RepoViewController: UITableViewDelegate {
         clearView.addSubview(textLabel)
         
         textLabel.snp.makeConstraints { (maker) in
-            maker.leading.equalToSuperview().offset(10)
+            maker.leading.equalToSuperview().offset(18)
             maker.width.equalToSuperview()
             maker.centerY.equalToSuperview()
             maker.height.equalTo(44)
         }
         
         return clearView
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let text = searchController.searchBar.searchTextField.text,
+            !text.isEmpty,
+            !isLoading,
+            let totalCount = presenter.totalCount else { return }
+        
+        if totalCount > 25,
+            indexPath.row == presenter.repos.count - 1,
+            presenter.repos.count < totalCount {
+            isLoading = true
+            page += 1
+            presenter.searchRepo(repoName: text, page: page, perPage: 25)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -118,14 +139,15 @@ extension RepoViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 84
+        return 100
     }
 }
 
 extension RepoViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        guard page != 1 else { return }
+        page = 1
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -136,8 +158,7 @@ extension RepoViewController: UISearchBarDelegate {
             activityIndicator.isHidden = true
             return
         }
-        presenter.searchRepo(repoName: searchText, page: 1, perPage: 25)
-        print("send request")
+        presenter.searchRepo(repoName: searchText, page: page, perPage: 25)
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
         tableView.isHidden = true
@@ -146,24 +167,22 @@ extension RepoViewController: UISearchBarDelegate {
 
 extension RepoViewController: RepoViewProtocol {
     func success() {
-        print("Success")
         guard let text = searchController.searchBar.text, !text.isEmpty, text.count != 0 else { return }
         tableView.reloadData()
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
         tableView.isHidden = false
+        isLoading = false
     }
     
     func failure(error: Error) {
-        print("Error")
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
         errorAlert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         errorAlert?.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         guard let errorAlert = errorAlert else { return }
         present(errorAlert, animated: true)
+        isLoading = false
     }
-    
-    
 }
 

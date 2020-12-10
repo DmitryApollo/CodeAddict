@@ -9,15 +9,18 @@
 import Foundation
 
 struct RepoListResponse: Decodable {
+    var totalCount: Int?
+    let items: [Repo]
+    
     enum CodingKeys: String, CodingKey {
         case items
+        case totalCount = "total_count"
     }
-    let items: [Repo]
+
 }
 
 struct Repo: Decodable {
     var watchers: Int?
-    var description: String?
     var name: String?
     
     var repoUrl: String?
@@ -27,7 +30,6 @@ struct Repo: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case watchers
-        case description
         case name
         case owner
         
@@ -43,7 +45,6 @@ struct Repo: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.watchers = try container.decode(Int?.self, forKey: .watchers)
-        self.description = try container.decode(String?.self, forKey: .description)
         self.name = try container.decode(String?.self, forKey: .name)
         
         self.repoUrl = try container.decode(String?.self, forKey: .repoUrl)

@@ -21,12 +21,12 @@ class RepoTableViewCell: UITableViewCell {
         
         addSubview(mainView)
         mainView.layer.cornerRadius = 10
-        mainView.backgroundColor = .systemGray6
+        mainView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0)
         mainView.snp.makeConstraints { (maker) in
             maker.top.equalToSuperview().offset(5)
             maker.bottom.equalToSuperview().offset(-5)
-            maker.leading.equalToSuperview().offset(8)
-            maker.trailing.equalToSuperview().offset(-8)
+            maker.leading.equalToSuperview().offset(15)
+            maker.trailing.equalToSuperview().offset(-15)
         }
         
         mainView.addSubview(userImageView)
@@ -37,29 +37,29 @@ class RepoTableViewCell: UITableViewCell {
         userImageView.clipsToBounds = true
         
         userImageView.snp.makeConstraints { (maker) in
-            maker.width.equalTo(50)
-            maker.height.equalTo(50)
-            maker.leading.equalToSuperview().offset(8)
+            maker.width.equalTo(60)
+            maker.height.equalTo(60)
+            maker.leading.equalToSuperview().offset(16)
             maker.centerY.equalToSuperview()
         }
         
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
         titleLabel.adjustsFontSizeToFitWidth = false
         titleLabel.lineBreakMode = .byTruncatingTail
         
         titleLabel.snp.makeConstraints { (maker) in
-            maker.leading.equalToSuperview().offset(66)
-            maker.trailing.equalToSuperview().offset(8)
-            maker.centerY.equalToSuperview().offset(-10)
+            maker.leading.equalTo(userImageView.snp.trailing).offset(16)
+            maker.trailing.equalToSuperview().offset(-16)
+            maker.centerY.equalToSuperview().offset(-12)
         }
         
-        subtitleLabel.font = UIFont.systemFont(ofSize: 14)
+        subtitleLabel.font = UIFont.systemFont(ofSize: 16)
         subtitleLabel.textColor = .gray
         
         subtitleLabel.snp.makeConstraints { (maker) in
-            maker.leading.equalToSuperview().offset(60)
-            maker.trailing.equalToSuperview().offset(8)
-            maker.centerY.equalToSuperview().offset(10)
+            maker.leading.equalTo(userImageView.snp.trailing).offset(16)
+            maker.trailing.equalToSuperview().offset(-16)
+            maker.centerY.equalToSuperview().offset(12)
         }
     }
     
